@@ -10,8 +10,8 @@ def home():
 def login():
     pass
 
-@app.route("/appointment")
-def appointment():
+@app.route("/appointmentrequest)
+def appointmentrequest():
     pass
 
 if __name__ == "__main__":

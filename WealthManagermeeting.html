@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html>
+
+<head>
+  <style type='text/css'>
+    href>a {
+      text-decoration: none
+    }
+
+    body {
+      margin: 0px;
+      padding: 0px;
+      font-family: 'Helvetica', 'Arial', sans-serif;
+    }
+
+
+  </style>
+</head>
+
+<body> <br><br>
+  <table width='100%' style='font-size: 14px; font-weight: 300; color: #4A4A4A;'>
+    <tr>
+      <td colspan='3' align='center' style='background-color: #F4F4F4; padding: 28px 0 20px 0;'>
+        <table align=center cellpadding=0 cellspacing=0>
+          <tr>
+            <td><b><a href='[ROOMLINK]' onclick="myFunction()" style='color: #FFFFFF; font-size: 20px; background-color: #83C36D; border-radius: 4px; border: 8px solid #83C36D;'>     Join the meeting     </a></b></td>
+          </tr>
+        </table>
+        <table align=center cellpadding=50 cellspacing=50 >
+            <tr>
+                <td><b><a href='Scheduler.html'  style='color: #FFFFFF; font-size: 20px; background-color: #83C36D; border-radius: 4px; border: 8px solid #83C36D;'>     Schedule the meeting     </a></b></td>
+              </tr>
+        </table>
+    </td>
+</table>
+
+<script>
+    function myFunction() {
+      let text = "Press a true\nCancel\nReschedule";
+      if (confirm(text) == true) {
+        text = "Accept";
+      } else if (confirm(text) == true) {
+        text = "Cancel";
+      }else {
+          text= "Reschedule";
+      }
+      document.getElementById("demo").innerHTML = text;
+    }
+    </script>
+
+</body>
+</html>
+

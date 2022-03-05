@@ -10,10 +10,10 @@ app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///epass.db'
 
 db=SQLAlchemy(app) 
 
-'''
-account_sid = 'sid key' 
-auth_token = 'token' 
-'''
+
+account_sid = 'AC44d2860df28da1c8432af2983e95d612' 
+auth_token = '544df1aed45fd7ca321ab94ea90eedea' 
+
 
 #client = Client(account_sid, auth_token) 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -40,27 +40,49 @@ class Appointment_request(db.Model):
     def __repr__(self):
         return f"Appointment_request('{self.name}','{self.email}','{self.contactnumber}')"
 
-    
 
 '''
 Home route
 '''
 @app.route("/")
 def home():
-    pass
-    
+    return render_template("bankhome.html")
 
 '''
 Login route
 '''
-@app.route("/login",methods=['POST','GET'])
-def login():
+@app.route("/customerlogin",methods=['POST','GET'])
+def customerlogin():
     if request.method == 'POST':
         u_name=request.form['name']
-        email=request.form['email']
+        e_mail=request.form['email']
         m_number=request.form['mnumber']
         p_pass=request.form['purpose']
-        rand=random.randint(1578935478963,5555555555555) 
+        rand=random.randint(1578935478963,5555555555555)
+        new_login_data=login_data(username=u_name,email=e_mail,mobilenumber=m_number,password=p_pass)
+        db.session.add(new_login_data) #This will be there only for this runtime.
+        db.session.commit()
+        key=new_login_data.id_no
+        Data=login_data.query.get(key)
+        #print(Data)
+    return render_template("customerlogin.html")
+
+
+@app.route("/Wealthmanagerlogin",methods=['POST','GET'])
+def Wealthmanagerlogin():
+    if request.method == 'POST':
+        u_name=request.form['name']
+        e_mail=request.form['email']
+        m_number=request.form['mnumber']
+        p_pass=request.form['purpose']
+        rand=random.randint(1578935478963,5555555555555)
+        new_login_data=login_data(username=u_name,email=e_mail,mobilenumber=m_number,password=p_pass)
+        db.session.add(new_login_data) #This will be there only for this runtime.
+        db.session.commit()
+        key=new_login_data.id_no
+        Data=login_data.query.get(key)
+        #print(Data)
+    return render_template("WealthManagerlogin.html")
 
 '''
 Appointmentrequest route
@@ -74,7 +96,14 @@ def appointmentrequest():
         appoint_d=request.form['description']
         date=request.form['date']
         time=request.form['time']
+        db.session.add(new_login_data) #This will be there only for this runtime.
+        db.session.commit()
+        key=new_login_data.id_no
+        Data=login_data.query.get(key)
+        #print(Data)
+    return render_template("request.html")
     
+
     
 
 if __name__ == "__main__":

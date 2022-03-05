@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <title>Request Form </title>
-  <link rel="stylesheet" type="text/css" href="../static/CSS/request.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/request.css" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" >
 </head>
 
 <body>
@@ -28,14 +30,6 @@
 
       <fieldset>
         <legend><span class="number">2</span>Appointment Details</legend>
-        <label for="appointment_for">Appointment for*:</label>
-        <select id="appointment_for" name="appointment_for" required>
-          <option value="coffee">Coffee</option>
-          <option value="meeting">Meeting</option>
-          <option value="Business">Business</option>
-          <option value="lunch">Lunch</option>
-          
-        </select>
         <label for="appointment_description">Appointment Description:</label>
         <textarea id="appointment_description" name="appointment_description" placeholder="I wish to get an appointment to discuss regarding investments."></textarea>
         <label for="date">Date*:</label>
